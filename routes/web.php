@@ -3,18 +3,23 @@
 use App\Http\Controllers\PageController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/',[PageController::class,'showhome'])->name('showhome');
+Route::controller(PageController::class)->group(function(){
 
-Route::get('/user',[PageController::class,'userpage'])->name('Allusers');
+    Route::get('/','showhome')->name('showhome');
 
-Route::get('/show/user/{id}',[PageController::class,'showuser'])->name('showuser');
+    Route::get('/user','userpage')->name('Allusers');
 
-Route::get('/add/user',[PageController::class,'adduser'])->name('adduser');
+    Route::get('/show/user/{id}','showuser')->name('showuser');
 
-Route::get('/update/user',[PageController::class,'updateuser'])->name('updateuser');
+    Route::post('/add/user','adduser')->name('adduser');
 
-Route::get('/delete/user/{id}',[PageController::class,'deleteuser'])->name('deleteuser');
+    Route::post('/update/user/{id}','updateuser')->name('updateuser');
+
+    Route::get('/delete/user/{id}','deleteuser')->name('deleteuser');
+
+
+    Route::get('/updatepage/{id}','updatepage')->name('updatepage');
+});
 
 Route::view('adduser','/adduser')->name('insertuser');
-
 

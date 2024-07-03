@@ -13,8 +13,13 @@ class PageController extends Controller
     }
     public function userpage()
     {
-        $users = DB::table('users')->get();
+        $users = DB::table('users')
+        ->join('cities','users.c_id','=','cities.city_id')
+        // ->get();
+        // ->orderBy('name')
+        ->Paginate(5);
         // dd($user);
+        // dd($users);
         return view('user',['users'=>$users]);
     }
     public function showuser(string $id)
@@ -32,15 +37,27 @@ class PageController extends Controller
             'created_at'=>now(),
             'updated_at'=>now()
         ]);
+        return redirect()->route('Allusers');
+
     }
-    public function updateuser()
+    public function updatepage(string $id)
+    {
+       $user=DB::table('users')
+       ->where('id',$id)->get();
+       return view('updateuser',['updata'=>$user]);
+    }
+    public function updateuser(Request $req,string $id)
     {
         $users=DB::table('users')
-        ->where('id',2)
+        ->where('id',$id)
         ->update([
-            'name'=>'bilal',
-            'email'=>'bilal@gmail.com'
+            'name'=>$req->name,
+            'email'=>$req->email,
+            'c_id'=>$req->city,
+            'created_at'=>now(),
+            'updated_at'=>now()
         ]);
+        return redirect()->route('Allusers');
     }
     public function deleteuser($id)
     {
@@ -49,4 +66,5 @@ class PageController extends Controller
         ->delete();
         return redirect()->route('Allusers');
     }
+
 }
