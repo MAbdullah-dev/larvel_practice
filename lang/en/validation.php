@@ -172,11 +172,11 @@ return [
     |
     */
 
-    'custom' => [
-        'attribute-name' => [
-            'rule-name' => 'custom-message',
-        ],
-    ],
+    // 'custom' => [
+    //     'email' => [
+    //         'required' => 'Email Adress must be required',
+    //     ],
+    // ],
 
     /*
     |--------------------------------------------------------------------------
@@ -189,6 +189,8 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+        'email'=>'Email Adress'
+    ],
 
 ];

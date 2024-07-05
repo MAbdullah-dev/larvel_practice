@@ -29,11 +29,20 @@ class PageController extends Controller
     }
     public function adduser(Request $req)
     {
+        // dd($req->all());
+        $req->validate([
+            // 'name'=>'required',
+            // 'email'=>'required|email',
+            // 'city'=>'required'
+
+        ],[
+            "email.required"=>"email ka bagar entry mana ha na ",
+        ]);
         $user=DB::table('users')
         ->insert([
             'name'=>$req->name,
             'email'=>$req->email,
-            'c_id'=>$req->city,
+            'city'=>$req->city,
             'created_at'=>now(),
             'updated_at'=>now()
         ]);
