@@ -15,12 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('name',30);
             $table->string('email',30);
-            $table->unsignedBigInteger('c_id');
-            $table->foreign('c_id')
-            ->references('city_id')
-            ->on('cities')
-            ->onUpdate('cascade')
-            ->onDelete('cascade');
+            // $table->unsignedBigInteger('c_id');
+            $table->foreignId('c_id')->references('city_id')->on('cities');
             $table->timestamps();
         });
     }

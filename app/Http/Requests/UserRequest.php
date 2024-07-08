@@ -27,4 +27,18 @@ class UserRequest extends FormRequest
             'city'=>'required'
         ];
     }
+    // public function messages()
+    // {
+    //     return [
+    //         "email.required"=>"email ka bagar entry mana ha na ",
+    //     ] ;
+    // }
+    public function attributes()
+    {
+        return[
+            'name'=>'Name',
+            'email'=>'Emmail Adress',
+            'city'=>'city'
+        ];
+    }
 }
