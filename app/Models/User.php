@@ -9,8 +9,12 @@ class User extends Model
 {
     use HasFactory;
 
-    public function post()
+    // public function post()
+    // {
+    //     return $this->hasMany(Post::class);
+    // }
+    public function roles()
     {
-        return $this->hasMany(Post::class);
+        return $this->belongsToMany(Role::class, 'user_role');
     }
 }

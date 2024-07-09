@@ -31,8 +31,8 @@ class PageController extends Controller
 
         // $users = User::paginate(5);
         // $users=User::find(7);
-        $users = User::with('city')->get();
-        return $users;
+        // $users = User::with('city')->get();
+        // return $users;
         // return view('user', ['users' => $users]);
     }
     public function showuser(string $id)

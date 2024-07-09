@@ -2,34 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
 use App\Models\Role;
 use Illuminate\Http\Request;
 
-class userController extends Controller
+class RoleController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        // $users=User::with('post')->get();
-
-        $users=User::get();
-
-        foreach ($users as  $user) {
-                echo $user->name;
-                echo $user->email;
-
-                foreach ($user->roles as $role) {
-                    echo $role->role_name . "/";
-                }
-
-                echo '<hr>';
-        }
-
-
-        // return $users->roles;
+        $role=Role::find(3);
+        return $role->users;
     }
 
     /**
